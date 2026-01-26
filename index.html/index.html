@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salon Aura | Luxury Beauty</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{
+min-height:100vh;
+background:radial-gradient(circle at top,#1a1a1a,#000);
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden
+}
+.container{width:100%;max-width:420px;padding:20px;text-align:center}
+h1{letter-spacing:4px;color:#d4af37;font-size:2.3em}
+.tag{font-style:italic;color:#aaa;margin:8px 0 25px}
+
+.btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:18px;
+margin:14px 0;
+border-radius:35px;
+text-decoration:none;
+font-weight:600;
+font-size:1.1em
+}
+.btn i{font-size:26px}
+
+.whatsapp{background:#25D366;color:#000}
+.message{background:#128C7E;color:#fff}
+.map{background:#d4af37;color:#000}
+.call{background:#fff;color:#000}
+.insta{background:#dd2a7b;color:#fff}
+
+.menu{
+position:fixed;top:18px;right:18px;
+font-size:30px;cursor:pointer;color:#d4af37
+}
+.side{
+position:fixed;top:0;right:-300px;
+width:300px;height:100%;
+background:#050505;
+padding:60px 22px;
+transition:.3s;z-index:5
+}
+.side.on{right:0}
+.side a{
+display:block;
+color:#fff;
+margin:18px 0;
+text-decoration:none;
+font-weight:500
+}
+.side a:hover{color:#d4af37}
+.about{
+font-size:.85em;
+color:#ccc;
+line-height:1.6;
+display:none;
+margin-top:10px
+}
+
+.overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,.6);
+display:none;z-index:4
+}
+.overlay.on{display:block}
+
+.login,.dashboard{
+display:none;
+margin-top:25px;
+background:#111;
+padding:22px;
+border-radius:14px
+}
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:8px;
+border:none;
+font-size:1em
+}
+.login button{
+width:100%;
+padding:14px;
+background:#d4af37;
+border:none;
+font-weight:700;
+cursor:pointer
+}
+.dashboard h3{color:#d4af37;margin-bottom:12px}
+.dashboard p{font-size:.9em;color:#ccc;line-height:1.6}
+</style>
+</head>
+
+<body>
+
+<div class="menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+<div class="overlay" id="ov" onclick="toggleMenu()"></div>
+
+<div class="side" id="side">
+  <a href="#" onclick="toggleAbout()">About</a>
+  <div class="about" id="about">
+Welcome to <strong>Salon Aura</strong>, your premier destination for beauty and elegance.
+Our expert team provides personalized grooming and styling services for men and women,
+using advanced techniques and premium products.
+We create a luxurious environment for relaxation and transformation,
+ensuring every client leaves feeling confident and radiant.<br><br>
+– <strong>Lisaja Yumeth</strong>
+  </div>
+  <a href="#" onclick="showLogin()">Admin / Staff Login</a>
+</div>
+
+<div class="container">
+<h1>SALON AURA</h1>
+<div class="tag">Where Beauty Meets Elegance</div>
+
+<a class="btn whatsapp" href="https://wa.me/94774657460">
+<i class="fab fa-whatsapp"></i> Book Appointment
+</a>
+
+<a class="btn message" href="https://wa.me/94774657460?text=Hello%20Salon%20Aura">
+<i class="fas fa-message"></i> Send Message
+</a>
+
+<a class="btn map" href="https://maps.app.goo.gl/qgMSn7JbtytDDyLB6">
+<i class="fas fa-location-dot"></i> Location
+</a>
+
+<a class="btn call" href="tel:+94774657460">
+<i class="fas fa-phone"></i> Call Now
+</a>
+
+<a class="btn insta" href="https://www.instagram.com/_.salonaura._">
+<i class="fab fa-instagram"></i> Instagram
+</a>
+
+<div class="login" id="loginBox">
+<h3>Admin / Staff Login</h3>
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="pass" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+
+<div class="dashboard" id="dash">
+<h3>Admin Dashboard</h3>
+<p>
+✔ View appointments<br>
+✔ Staff access control<br>
+✔ Client management<br>
+✔ Secure Firebase login
+</p>
+</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig={
+apiKey:"AIzaSyCTELgygHt9-9G-YgaH9wtKOc6f_rVKa9w",
+authDomain:"salon-aura-590b4.firebaseapp.com",
+projectId:"salon-aura-590b4"
+};
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+
+function login(){
+auth.signInWithEmailAndPassword(
+email.value,pass.value
+).then(()=>{
+loginBox.style.display="none";
+dash.style.display="block";
+});
+}
+function toggleMenu(){
+side.classList.toggle("on");
+ov.classList.toggle("on");
+}
+function toggleAbout(){
+about.style.display=about.style.display==="block"?"none":"block";
+}
+function showLogin(){
+loginBox.style.display="block";
+}
+</script>
+
+</body>
+</html>
