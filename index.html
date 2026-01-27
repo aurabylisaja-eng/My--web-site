@@ -8,7 +8,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI, sans-serif;
+}
+
 body{
   min-height:100vh;
   background:radial-gradient(circle at top,#1a1f3c,#050814);
@@ -17,75 +23,143 @@ body{
 
 /* MENU */
 .menu{
-  position:fixed;top:15px;right:15px;
-  font-size:26px;cursor:pointer;z-index:5
+  position:fixed;
+  top:15px;
+  right:15px;
+  font-size:26px;
+  cursor:pointer;
+  z-index:5;
 }
+
 .overlay{
-  position:fixed;inset:0;
+  position:fixed;
+  inset:0;
   background:rgba(0,0,0,.6);
   backdrop-filter:blur(6px);
-  opacity:0;visibility:hidden;
-  transition:.3s;z-index:4
+  opacity:0;
+  visibility:hidden;
+  transition:.3s;
+  z-index:4;
 }
-.overlay.on{opacity:1;visibility:visible}
+
+.overlay.on{
+  opacity:1;
+  visibility:visible;
+}
 
 .side{
-  position:fixed;top:0;right:-260px;
-  width:260px;height:100%;
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100%;
   background:#0b0f2a;
   padding:60px 25px;
-  transition:.3s;z-index:6
+  transition:.3s;
+  z-index:6;
 }
+
 .side.on{right:0}
+
 .side a{
-  display:block;color:#fff;
+  display:block;
+  color:#fff;
   text-decoration:none;
-  margin:18px 0;font-weight:500
+  margin:18px 0;
+  font-weight:500;
 }
+
 .side a:hover{color:#d4af37}
 
 /* HOME */
 .box{
   text-align:center;
   max-width:360px;
-  margin:130px auto;
+  margin:120px auto;
 }
-h1{letter-spacing:3px;font-size:2.2rem}
-.tag{color:#d4af37;font-style:italic;margin:10px 0 25px}
+
+h1{
+  letter-spacing:3px;
+  font-size:2.2rem;
+}
+
+.tag{
+  color:#d4af37;
+  margin:12px 0 30px;
+  font-style:italic;
+}
 
 .btn{
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   gap:8px;
-  margin:10px 0;
+  margin:12px 0;
   padding:14px;
-  border-radius:25px;
-  color:#fff;text-decoration:none;font-weight:600
+  border-radius:30px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
 }
+
 .w{background:#25D366}
 .l{background:#4285F4}
 .c{background:#ff5722}
 .i{background:#d62976}
 
-/* ABOUT */
-.about{
+/* CONTACT FORM */
+.contact{
   display:none;
+  padding:40px;
+}
+
+.contact h2{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.contact p{
   text-align:center;
   color:#ccc;
-  padding:40px
+  margin-bottom:25px;
+}
+
+.contact-form{
+  max-width:420px;
+  margin:auto;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+.contact-form textarea{
+  height:120px;
+  resize:none;
+}
+
+.contact-form button{
+  width:100%;
+  padding:14px;
+  background:#000;
+  color:#fff;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
 }
 
 /* ADMIN */
 #admin{
   display:none;
   padding:40px;
-  text-align:center
-}
-.admin-card{
-  max-width:420px;
-  margin:auto;
-  background:#0e143a;
-  padding:30px;
-  border-radius:16px
+  text-align:center;
 }
 </style>
 </head>
@@ -99,9 +173,9 @@ h1{letter-spacing:3px;font-size:2.2rem}
 <div class="overlay" id="ov" onclick="toggleMenu()"></div>
 
 <div class="side" id="side">
-  <a onclick="showHome()">Home</a>
-  <a onclick="showAbout()">About</a>
-  <a onclick="adminLogin()">Admin Login</a>
+  <a href="#" onclick="showHome()">Home</a>
+  <a href="#" onclick="showContact()">Contact</a>
+  <a href="#" onclick="adminLogin()">Admin Login</a>
 </div>
 
 <!-- HOME -->
@@ -109,40 +183,37 @@ h1{letter-spacing:3px;font-size:2.2rem}
   <h1>SALON AURA</h1>
   <div class="tag">Where Beauty Meets Elegance</div>
 
-  <a class="btn w" href="https://wa.me/94774675460">
-    <i class="fab fa-whatsapp"></i> Book Now
-  </a>
-  <a class="btn l" href="#">
-    <i class="fa fa-map-marker-alt"></i> Location
-  </a>
-  <a class="btn c" href="tel:+94774675460">
-    <i class="fa fa-phone"></i> Call
-  </a>
-  <a class="btn i" href="https://instagram.com/_salonaura_">
-    <i class="fab fa-instagram"></i> Instagram
-  </a>
+  <a class="btn w" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a class="btn l" href="#"><i class="fa fa-map-marker-alt"></i> Location</a>
+  <a class="btn c" href="tel:+94774657460"><i class="fa fa-phone"></i> Call</a>
+  <a class="btn i" href="#"><i class="fab fa-instagram"></i> Instagram</a>
 </div>
 
-<!-- ABOUT -->
-<div id="about" class="about">
-  <h2>About Salon Aura</h2>
-  <br>
-  <p>
-    Welcome to <b>Salon Aura</b><br>
-    Premium beauty & care experience.<br>
-    Elegance. Style. Confidence.
-  </p>
+<!-- CONTACT -->
+<div id="contact" class="contact">
+  <h2>SEND A MESSAGE</h2>
+  <p>Reach out to us for expert hair care & personalized services.</p>
+
+  <!-- NETLIFY FORM -->
+  <form class="contact-form" method="POST" data-netlify="true" name="contact">
+    <input type="hidden" name="form-name" value="contact">
+
+    <input type="text" name="name" placeholder="Your name*" required>
+    <input type="email" name="email" placeholder="Your email*" required>
+    <input type="text" name="phone" placeholder="Your contact number*" required>
+    <input type="text" name="subject" placeholder="Subject*" required>
+    <textarea name="message" placeholder="Your message*" required></textarea>
+
+    <button type="submit">SEND MESSAGE</button>
+  </form>
 </div>
 
 <!-- ADMIN -->
 <div id="admin">
-  <div class="admin-card">
-    <h2>Admin Dashboard</h2>
-    <p>Demo version</p>
-    <p>Bookings & reports coming soon</p>
-    <br>
-    <button class="btn c" onclick="showHome()">Logout</button>
-  </div>
+  <h2>Admin Dashboard</h2>
+  <p>Demo version<br>Bookings & reports coming soon</p>
+  <br>
+  <button class="btn c" onclick="showHome()">Logout</button>
 </div>
 
 <script>
@@ -153,14 +224,14 @@ function toggleMenu(){
 
 function showHome(){
   home.style.display="block";
-  about.style.display="none";
+  contact.style.display="none";
   admin.style.display="none";
   toggleMenu();
 }
 
-function showAbout(){
+function showContact(){
   home.style.display="none";
-  about.style.display="block";
+  contact.style.display="block";
   admin.style.display="none";
   toggleMenu();
 }
@@ -169,12 +240,12 @@ function adminLogin(){
   const pw = prompt("Enter admin password");
   if(pw === "_Aura2025"){
     home.style.display="none";
-    about.style.display="none";
+    contact.style.display="none";
     admin.style.display="block";
-    toggleMenu();
   }else{
     alert("Wrong password");
   }
+  toggleMenu();
 }
 </script>
 
