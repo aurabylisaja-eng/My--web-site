@@ -6,6 +6,7 @@
 <title>Salon Aura</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
@@ -27,9 +28,21 @@ text-align:center;
 position:relative
 }
 
-h1{letter-spacing:4px}
-.tag{color:#d4af37;margin:10px 0 25px;font-style:italic}
+/* BRAND */
+.brand{
+font-family:'Playfair Display',serif;
+font-size:34px;
+letter-spacing:6px;
+font-weight:600
+}
+.tag{
+color:#d4af37;
+margin:12px 0 28px;
+font-style:italic;
+letter-spacing:1px
+}
 
+/* BUTTONS */
 .btn{
 display:flex;
 align-items:center;
@@ -50,6 +63,7 @@ transition:.3s
 .c{background:#E67E22}
 .i{background:#C13584}
 
+/* SECTIONS */
 .section{display:none}
 .section.active{display:block}
 
@@ -72,44 +86,49 @@ cursor:pointer
 }
 
 .back{
-margin-top:20px;
+margin-top:22px;
 color:#d4af37;
 cursor:pointer;
-display:inline-block
+display:inline-block;
+font-size:14px
 }
 
-/* MENU */
+/* MENU BUTTON – FIXED TOP RIGHT */
 .menu-btn{
-position:absolute;
-top:15px;
-right:15px;
+position:fixed;
+top:18px;
+right:18px;
 font-size:22px;
-cursor:pointer
+cursor:pointer;
+z-index:100
 }
 
+/* MENU OVERLAY */
 .menu{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.7);
+background:rgba(0,0,0,.75);
 display:none;
 align-items:center;
-justify-content:center
+justify-content:center;
+z-index:99
 }
 
 .menu-box{
 background:#0b0f2a;
 padding:30px;
-border-radius:20px;
+border-radius:22px;
 width:260px;
 text-align:center
 }
 
 .menu-box a{
 display:block;
-margin:15px 0;
+margin:16px 0;
 color:#fff;
 text-decoration:none;
-font-weight:500
+font-weight:500;
+letter-spacing:1px
 }
 
 .menu-box a:hover{color:#d4af37}
@@ -118,15 +137,16 @@ font-weight:500
 
 <body>
 
-<div class="container">
-
+<!-- MENU BUTTON -->
 <div class="menu-btn" onclick="toggleMenu()">
 <i class="fas fa-bars"></i>
 </div>
 
+<div class="container">
+
 <!-- HOME -->
 <div id="home" class="section active">
-<h1>SALON AURA</h1>
+<div class="brand">SALON AURA</div>
 <div class="tag">Where Beauty Meets Elegance</div>
 
 <a class="btn w" href="https://wa.me/94774657460">
@@ -148,38 +168,39 @@ font-weight:500
 
 <!-- ABOUT -->
 <div id="about" class="section">
-<h1>About Us</h1>
-<p style="margin-top:20px;color:#ccc;line-height:1.6">
-Salon Aura is a modern beauty destination focused on elegance,
-confidence, and personalized care. We provide professional grooming
-and beauty services in a calm, luxurious environment.
+<h2 style="letter-spacing:2px">About Us</h2>
+<p style="margin-top:20px;color:#ccc;line-height:1.7;font-size:15px">
+Salon Aura is a refined beauty destination focused on elegance,
+confidence, and personalized care. Our professional team delivers
+high-quality grooming and beauty services in a calm,
+luxurious environment designed to elevate every client experience.
 </p>
-<div class="back" onclick="openSection('home')">← Back</div>
+<div class="back" onclick="openSection('home')">← Back to Home</div>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="section">
-<h1>Contact Us</h1>
+<h2 style="letter-spacing:2px">Contact Us</h2>
 <input id="n" placeholder="Your Name">
 <input id="p" placeholder="Phone Number">
 <textarea id="m" placeholder="Message"></textarea>
 <button onclick="sendMsg()">Send via WhatsApp</button>
-<div class="back" onclick="openSection('home')">← Back</div>
+<div class="back" onclick="openSection('home')">← Back to Home</div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin" class="section">
-<h1>Admin Login</h1>
+<h2 style="letter-spacing:2px">Admin Login</h2>
 <input id="u" placeholder="Username">
 <input id="pw" type="password" placeholder="Password">
 <button onclick="login()">Login</button>
 <p id="msg" style="margin-top:15px"></p>
-<div class="back" onclick="openSection('home')">← Back</div>
+<div class="back" onclick="openSection('home')">← Back to Home</div>
 </div>
 
 </div>
 
-<!-- MENU OVERLAY -->
+<!-- MENU -->
 <div class="menu" id="menu" onclick="toggleMenu()">
 <div class="menu-box" onclick="event.stopPropagation()">
 <a onclick="go('about')">About</a>
