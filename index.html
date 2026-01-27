@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+
 body{
 min-height:100vh;
 background:linear-gradient(135deg,#050816,#1a1f3c);
@@ -17,7 +18,14 @@ display:flex;
 justify-content:center;
 align-items:center;
 }
-.container{width:100%;max-width:420px;padding:25px;text-align:center}
+
+.container{
+width:100%;
+max-width:420px;
+padding:25px;
+text-align:center;
+position:relative
+}
 
 h1{letter-spacing:4px}
 .tag{color:#d4af37;margin:10px 0 25px;font-style:italic}
@@ -41,7 +49,6 @@ transition:.3s
 .m{background:#4285F4}
 .c{background:#E67E22}
 .i{background:#C13584}
-.s{background:#0b0f2a}
 
 .section{display:none}
 .section.active{display:block}
@@ -70,6 +77,42 @@ color:#d4af37;
 cursor:pointer;
 display:inline-block
 }
+
+/* MENU */
+.menu-btn{
+position:absolute;
+top:15px;
+right:15px;
+font-size:22px;
+cursor:pointer
+}
+
+.menu{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+display:none;
+align-items:center;
+justify-content:center
+}
+
+.menu-box{
+background:#0b0f2a;
+padding:30px;
+border-radius:20px;
+width:260px;
+text-align:center
+}
+
+.menu-box a{
+display:block;
+margin:15px 0;
+color:#fff;
+text-decoration:none;
+font-weight:500
+}
+
+.menu-box a:hover{color:#d4af37}
 </style>
 </head>
 
@@ -77,28 +120,39 @@ display:inline-block
 
 <div class="container">
 
+<div class="menu-btn" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
 <!-- HOME -->
 <div id="home" class="section active">
 <h1>SALON AURA</h1>
 <div class="tag">Where Beauty Meets Elegance</div>
 
-<a class="btn w" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a class="btn m" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6"><i class="fa fa-location-dot"></i> Location</a>
-<a class="btn c" href="tel:+94774657460"><i class="fa fa-phone"></i> Call</a>
-<a class="btn i" href="https://www.instagram.com/_.salonaura._"><i class="fab fa-instagram"></i> Instagram</a>
+<a class="btn w" href="https://wa.me/94774657460">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</a>
 
-<a class="btn s" onclick="openSection('about')">About</a>
-<a class="btn s" onclick="openSection('contact')">Contact</a>
-<a class="btn s" onclick="openSection('admin')">Admin Login</a>
+<a class="btn m" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6">
+<i class="fa fa-location-dot"></i> Location
+</a>
+
+<a class="btn c" href="tel:+94774657460">
+<i class="fa fa-phone"></i> Call
+</a>
+
+<a class="btn i" href="https://www.instagram.com/_.salonaura._">
+<i class="fab fa-instagram"></i> Instagram
+</a>
 </div>
 
 <!-- ABOUT -->
 <div id="about" class="section">
 <h1>About Us</h1>
 <p style="margin-top:20px;color:#ccc;line-height:1.6">
-Salon Aura is a modern beauty destination focused on elegance, confidence,
-and personalized care. We provide professional grooming and beauty services
-in a calm, luxurious environment to ensure every client leaves feeling radiant.
+Salon Aura is a modern beauty destination focused on elegance,
+confidence, and personalized care. We provide professional grooming
+and beauty services in a calm, luxurious environment.
 </p>
 <div class="back" onclick="openSection('home')">← Back</div>
 </div>
@@ -125,10 +179,30 @@ in a calm, luxurious environment to ensure every client leaves feeling radiant.
 
 </div>
 
+<!-- MENU OVERLAY -->
+<div class="menu" id="menu" onclick="toggleMenu()">
+<div class="menu-box" onclick="event.stopPropagation()">
+<a onclick="go('about')">About</a>
+<a onclick="go('contact')">Contact</a>
+<a onclick="go('admin')">Admin Login</a>
+</div>
+</div>
+
 <script>
 function openSection(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
+}
+
+function toggleMenu(){
+menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+menu.style.alignItems="center";
+menu.style.justifyContent="center";
+}
+
+function go(id){
+toggleMenu();
+openSection(id);
 }
 
 function sendMsg(){
