@@ -17,78 +17,73 @@ body{
 
 /* MENU */
 .menu{
-  position:fixed;
-  top:15px;
-  right:15px;
-  font-size:26px;
-  cursor:pointer;
-  z-index:10;
+  position:fixed;top:15px;right:15px;
+  font-size:26px;cursor:pointer;z-index:5
 }
 .overlay{
-  position:fixed;
-  inset:0;
+  position:fixed;inset:0;
   background:rgba(0,0,0,.6);
-  visibility:hidden;
+  backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;
+  transition:.3s;z-index:4
 }
-.overlay.on{visibility:visible}
+.overlay.on{opacity:1;visibility:visible}
 .side{
-  position:fixed;
-  top:0;
-  right:-260px;
-  width:260px;
-  height:100%;
+  position:fixed;top:0;right:-260px;
+  width:260px;height:100%;
   background:#0b0f2a;
   padding:60px 25px;
-  transition:.3s;
-  z-index:11;
+  transition:.3s;z-index:6
 }
 .side.on{right:0}
 .side a{
-  display:block;
-  color:#fff;
+  display:block;color:#fff;
   text-decoration:none;
-  margin:18px 0;
-  font-size:18px;
+  margin:18px 0;font-weight:500
 }
 .side a:hover{color:#f4d37f}
 
 /* SECTIONS */
-.box{
-  max-width:400px;
+.section{
+  display:none;
+  max-width:420px;
   margin:120px auto;
-  text-align:center;
+  padding:20px;
+  text-align:center
 }
-.contact, .admin{display:none}
+.section h1{font-size:2.3rem;letter-spacing:3px}
+.tag{color:#f4d37f;margin:12px 0;font-style:italic}
+
+/* BUTTONS */
+.btn{
+  display:block;margin:12px auto;
+  width:220px;padding:12px;
+  border-radius:30px;
+  text-decoration:none;color:#fff
+}
+.b1{background:#28a745}
+.b2{background:#007bff}
+.b3{background:#8b2c5e}
 
 /* CONTACT FORM */
-.contact-form{
-  margin-top:25px;
+form{margin-top:20px}
+input,textarea{
+  width:100%;padding:12px;
+  margin:10px 0;border-radius:8px;
+  border:1px solid #ccc;font-size:15px
 }
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:8px;
-  border:none;
-}
-.contact-form button{
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:25px;
-  background:#f4d37f;
-  font-size:16px;
-  cursor:pointer;
+textarea{height:120px;resize:none}
+button{
+  width:100%;padding:12px;
+  border:none;border-radius:30px;
+  background:#000;color:#fff;
+  font-size:16px;cursor:pointer
 }
 
 /* ADMIN */
-.admin input{
-  width:100%;
-  padding:12px;
-  margin:12px 0;
-  border-radius:8px;
-  border:none;
+.admin-box{
+  background:#0b0f2a;
+  padding:20px;border-radius:12px
 }
 </style>
 </head>
@@ -102,39 +97,52 @@ body{
 <div class="overlay" id="ov" onclick="toggleMenu()"></div>
 
 <div class="side" id="side">
-  <a href="#" onclick="showHome()">Home</a>
-  <a href="#" onclick="showContact()">Contact</a>
-  <a href="#" onclick="showAdmin()">Admin Login</a>
+  <a href="#" onclick="show('home')">Home</a>
+  <a href="#" onclick="show('about')">About</a>
+  <a href="#" onclick="show('contact')">Contact</a>
+  <a href="#" onclick="show('admin')">Admin Login</a>
 </div>
 
 <!-- HOME -->
-<div id="home" class="box">
+<div id="home" class="section" style="display:block">
   <h1>SALON AURA</h1>
-  <p style="margin-top:12px;color:#f4d37f">
-    Where Beauty Meets Elegance
+  <div class="tag">Where Beauty Meets Elegance</div>
+
+  <a href="#" class="btn b1" onclick="show('contact')">📞 Book Appointment</a>
+  <a href="#" class="btn b2" onclick="show('contact')">💬 Contact Us</a>
+  <a href="#" class="btn b3" onclick="show('admin')">🔐 Admin Login</a>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <h1>ABOUT US</h1>
+  <p style="margin-top:15px;color:#ccc">
+    Salon Aura is dedicated to enhancing your natural beauty
+    with elegance, care, and professionalism.
   </p>
 </div>
 
 <!-- CONTACT -->
-<div id="contact" class="box contact">
-  <h2>Contact Us</h2>
-  <p style="color:#ccc">We will contact you soon</p>
+<div id="contact" class="section">
+  <h1>CONTACT US</h1>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <input type="tel" placeholder="Phone Number" required>
-    <textarea rows="4" placeholder="Message"></textarea>
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="contact">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send Message</button>
   </form>
 </div>
 
 <!-- ADMIN -->
-<div id="admin" class="box admin">
-  <h2>Admin Login</h2>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button style="padding:10px 20px;border-radius:20px;border:none">Login</button>
+<div id="admin" class="section">
+  <h1>ADMIN LOGIN</h1>
+  <div class="admin-box">
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
 </div>
 
 <script>
@@ -142,22 +150,10 @@ function toggleMenu(){
   side.classList.toggle("on");
   ov.classList.toggle("on");
 }
-function showHome(){
-  home.style.display="block";
-  contact.style.display="none";
-  admin.style.display="none";
-  toggleMenu();
-}
-function showContact(){
-  home.style.display="none";
-  contact.style.display="block";
-  admin.style.display="none";
-  toggleMenu();
-}
-function showAdmin(){
-  home.style.display="none";
-  contact.style.display="none";
-  admin.style.display="block";
+function show(id){
+  document.querySelectorAll('.section')
+    .forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
   toggleMenu();
 }
 </script>
