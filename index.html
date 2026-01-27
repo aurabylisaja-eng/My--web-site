@@ -8,182 +8,139 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
 body{
 min-height:100vh;
 background:linear-gradient(135deg,#050816,#1a1f3c);
 color:#fff;
-overflow-x:hidden
+display:flex;
+justify-content:center;
+align-items:center;
 }
+.container{width:100%;max-width:420px;padding:25px;text-align:center}
 
-/* MENU */
-.menu{position:fixed;top:18px;right:18px;font-size:28px;cursor:pointer;z-index:10}
-.overlay{
-position:fixed;inset:0;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(6px);
-opacity:0;visibility:hidden;transition:.3s;z-index:8
-}
-.overlay.on{opacity:1;visibility:visible}
-.side{
-position:fixed;top:0;right:-270px;
-width:270px;height:100%;
-background:#0b0f2a;
-padding:70px 25px;
-transition:.35s;z-index:9
-}
-.side.on{right:0}
-.side a{
-display:block;color:#fff;text-decoration:none;
-margin:20px 0;font-size:17px
-}
-.side a:hover{color:#d4af37}
+h1{letter-spacing:4px}
+.tag{color:#d4af37;margin:10px 0 25px;font-style:italic}
 
-/* SECTIONS */
-.section{display:none;padding:120px 20px;text-align:center}
-h1{font-size:2.4rem;letter-spacing:3px}
-.tag{color:#d4af37;margin:14px 0 34px;font-style:italic}
-
-/* BUTTONS */
 .btn{
-display:flex;align-items:center;justify-content:center;
-gap:10px;margin:14px auto;
-max-width:380px;padding:15px;
-border-radius:35px;
-text-decoration:none;color:#fff;
-font-weight:600;font-size:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:15px;
+margin:12px 0;
+border-radius:30px;
+text-decoration:none;
+color:#fff;
+font-weight:600;
 transition:.3s
 }
-.btn:hover{transform:scale(1.04);box-shadow:0 0 18px rgba(212,175,55,.4)}
-.w{background:#25d366}
-.m{background:#4285f4}
-.c{background:#e67e22}
-.i{background:#c13584}
+.btn:hover{transform:scale(1.05)}
 
-/* ABOUT */
-.about-box{
-max-width:560px;margin:auto;
-color:#ddd;line-height:1.7
-}
+.w{background:#25D366}
+.m{background:#4285F4}
+.c{background:#E67E22}
+.i{background:#C13584}
+.s{background:#0b0f2a}
 
-/* CONTACT */
-.form{
-max-width:420px;margin:auto
-}
-.form input,.form textarea{
-width:100%;padding:13px;margin:10px 0;
-border-radius:10px;border:none;font-size:15px
-}
-.form button{
-width:100%;padding:15px;
-background:#d4af37;border:none;
-border-radius:35px;font-size:16px;
-cursor:pointer;font-weight:600
+.section{display:none}
+.section.active{display:block}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:none
 }
 
-/* ADMIN */
-.admin{
-max-width:360px;margin:auto
+button{
+width:100%;
+padding:14px;
+border-radius:30px;
+border:none;
+background:#d4af37;
+font-weight:600;
+cursor:pointer
 }
-.admin input{
-width:100%;padding:13px;margin:10px 0;
-border-radius:10px;border:none
+
+.back{
+margin-top:20px;
+color:#d4af37;
+cursor:pointer;
+display:inline-block
 }
-.admin-msg{margin-top:10px}
 </style>
 </head>
 
 <body>
 
-<div class="menu" onclick="toggleMenu()">
-<i class="fa fa-bars"></i>
-</div>
-
-<div class="overlay" id="ov" onclick="toggleMenu()"></div>
-
-<div class="side" id="side">
-<a onclick="show('home')">Home</a>
-<a onclick="show('about')">About</a>
-<a onclick="show('contact')">Contact</a>
-<a onclick="show('admin')">Admin Login</a>
-</div>
+<div class="container">
 
 <!-- HOME -->
-<div id="home" class="section" style="display:block">
+<div id="home" class="section active">
 <h1>SALON AURA</h1>
 <div class="tag">Where Beauty Meets Elegance</div>
 
-<a class="btn w" href="https://wa.me/94774657460" target="_blank">
-<i class="fab fa-whatsapp"></i> Book Appointment
-</a>
+<a class="btn w" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a class="btn m" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6"><i class="fa fa-location-dot"></i> Location</a>
+<a class="btn c" href="tel:+94774657460"><i class="fa fa-phone"></i> Call</a>
+<a class="btn i" href="https://www.instagram.com/_.salonaura._"><i class="fab fa-instagram"></i> Instagram</a>
 
-<a class="btn m" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6" target="_blank">
-<i class="fa fa-location-dot"></i> Location
-</a>
-
-<a class="btn c" href="tel:+94774657460">
-<i class="fa fa-phone"></i> Call Now
-</a>
-
-<a class="btn i" href="https://www.instagram.com/_.salonaura._" target="_blank">
-<i class="fab fa-instagram"></i> Instagram
-</a>
+<a class="btn s" onclick="openSection('about')">About</a>
+<a class="btn s" onclick="openSection('contact')">Contact</a>
+<a class="btn s" onclick="openSection('admin')">Admin Login</a>
 </div>
 
 <!-- ABOUT -->
 <div id="about" class="section">
-<h1>About Salon Aura</h1>
-<div class="about-box">
-Salon Aura is a premium beauty destination dedicated to elegance,
-confidence, and personalized care.  
-Our professional team delivers modern styling, grooming, and beauty
-services using high-quality products in a relaxing atmosphere.  
-Every visit is designed to make you feel refreshed, confident,
-and radiant.
-</div>
+<h1>About Us</h1>
+<p style="margin-top:20px;color:#ccc;line-height:1.6">
+Salon Aura is a modern beauty destination focused on elegance, confidence,
+and personalized care. We provide professional grooming and beauty services
+in a calm, luxurious environment to ensure every client leaves feeling radiant.
+</p>
+<div class="back" onclick="openSection('home')">← Back</div>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="section">
 <h1>Contact Us</h1>
-<div class="form">
 <input id="n" placeholder="Your Name">
 <input id="p" placeholder="Phone Number">
-<textarea id="m" placeholder="Your Message"></textarea>
-<button onclick="send()">Send Message</button>
-</div>
+<textarea id="m" placeholder="Message"></textarea>
+<button onclick="sendMsg()">Send via WhatsApp</button>
+<div class="back" onclick="openSection('home')">← Back</div>
 </div>
 
 <!-- ADMIN -->
 <div id="admin" class="section">
 <h1>Admin Login</h1>
-<div class="admin">
 <input id="u" placeholder="Username">
 <input id="pw" type="password" placeholder="Password">
 <button onclick="login()">Login</button>
-<div class="admin-msg" id="msg"></div>
+<p id="msg" style="margin-top:15px"></p>
+<div class="back" onclick="openSection('home')">← Back</div>
 </div>
+
 </div>
 
 <script>
-function toggleMenu(){
-side.classList.toggle("on");
-ov.classList.toggle("on");
+function openSection(id){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
-function show(id){
-document.querySelectorAll(".section").forEach(s=>s.style.display="none");
-document.getElementById(id).style.display="block";
-toggleMenu();
-}
-function send(){
+
+function sendMsg(){
 let url=`https://wa.me/94774657460?text=Name:%20${n.value}%0APhone:%20${p.value}%0AMessage:%20${m.value}`;
-window.open(url,"_blank");
+window.location.href=url;
 }
+
 function login(){
 if(u.value==="admin" && pw.value==="Aura@2025#Salon"){
 msg.innerHTML="Admin access granted ✅";
 }else{
-msg.innerHTML="Access denied ❌";
+msg.innerHTML="Wrong credentials ❌";
 }
 }
 </script>
