@@ -1,72 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Salon Aura | Admin Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salon Aura</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #1a1f3c, #000);
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{min-height:100vh;background:radial-gradient(circle at top,#1a1f3c,#050816);color:#fff}
 
-    .card {
-      background: #000;
-      padding: 30px 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 0 40px rgba(218, 165, 32, 0.4);
-      max-width: 320px;
-      width: 100%;
-    }
+.menu{position:fixed;top:15px;right:15px;font-size:26px;cursor:pointer;z-index:5}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(5px);
+opacity:0;visibility:hidden;transition:.3s;z-index:4}
+.overlay.on{opacity:1;visibility:visible}
 
-    h1 {
-      color: #d4af37;
-      margin-bottom: 10px;
-    }
+.side{position:fixed;top:0;right:-260px;width:260px;height:100%;
+background:#0b0f2a;padding:60px 20px;transition:.3s;z-index:5}
+.side.on{right:0}
+.side a{display:block;color:#fff;text-decoration:none;margin:18px 0;font-weight:500}
+.side a:hover{color:#d4af37}
 
-    p {
-      font-size: 14px;
-      opacity: 0.8;
-      margin-bottom: 25px;
-    }
+.about{color:#ccc;font-size:.85em;line-height:1.5;display:none}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #d4af37, #f5d76e);
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.box{text-align:center;max-width:360px;margin:120px auto}
+h1{letter-spacing:3px;font-size:2.2em}
+.tag{color:#d4af37;margin:10px 0 20px;font-style:italic}
 
-    button:hover {
-      opacity: 0.9;
-    }
-  </style>
+.btn{display:flex;align-items:center;justify-content:center;padding:14px;margin:10px 0;
+border-radius:25px;color:#fff;text-decoration:none;font-weight:600}
+.btn i{margin-right:8px}
+.w{background:#25D366}.l{background:#4285F4}.c{background:#FF5722}.i{background:#dd2a7b}
+
+/* Admin */
+#admin{display:none;padding:40px;text-align:center}
+.admin-card{max-width:400px;margin:auto;background:#020617;padding:25px;border-radius:15px}
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Admin Dashboard</h1>
-    <p>Welcome to Salon Aura Admin Panel.<br>You are successfully logged in.</p>
-    <button onclick="logout()">Logout</button>
-  </div>
 
-  <script>
-    function logout() {
-      alert("Logged out successfully");
-    }
-  </script>
+<div class="menu" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+<div class="overlay" id="ov" onclick="toggleMenu()"></div>
+
+<div class="side" id="side">
+  <a href="#" onclick="showHome()">Home</a>
+  <a onclick="toggleAbout()">About</a>
+  <a onclick="adminLogin()">Admin Login</a>
+
+  <div class="about" id="about">
+    Welcome to <strong>Salon Aura</strong>, where beauty meets elegance.
+    <br>– <strong>Lisaja Yumeth</strong>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="box">
+  <h1>SALON AURA</h1>
+  <div class="tag">Where Beauty Meets Elegance</div>
+
+  <a class="btn w" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i>Book</a>
+  <a class="btn l" href="https://maps.app.goo.gl/qgMSn7JbtytDDyLB6"><i class="fas fa-map-marker-alt"></i>Location</a>
+  <a class="btn c" href="tel:+94774657460"><i class="fas fa-phone"></i>Call</a>
+  <a class="btn i" href="https://www.instagram.com/_.salonaura._"><i class="fab fa-instagram"></i>Instagram</a>
+</div>
+
+<!-- ADMIN -->
+<div id="admin">
+  <div class="admin-card">
+    <h2>Admin Dashboard</h2>
+    <p>Demo version – Phase 1 complete</p>
+    <p>Bookings, staff & reports coming in Phase 2</p>
+    <button class="btn w" onclick="showHome()">Logout</button>
+  </div>
+</div>
+
+<script>
+function toggleMenu(){
+  side.classList.toggle("on");
+  ov.classList.toggle("on");
+}
+function toggleAbout(){
+  about.style.display = about.style.display==="block"?"none":"block";
+}
+function adminLogin(){
+  const pw = prompt("Enter Admin Password");
+  if(pw==="aura2026"){
+    home.style.display="none";
+    admin.style.display="block";
+  }else{
+    alert("Wrong password");
+  }
+}
+function showHome(){
+  admin.style.display="none";
+  home.style.display="block";
+}
+</script>
+
 </body>
 </html>
