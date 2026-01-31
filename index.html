@@ -5,238 +5,233 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salon Aura</title>
 
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Segoe UI', sans-serif;
+}
 
 body{
-min-height:100vh;
-background:linear-gradient(135deg,#050816,#1a1f3c);
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
+  min-height:100vh;
+  background: radial-gradient(circle at top, #1a1f3c, #0b0f24);
+  color:#fff;
 }
 
-.container{
-width:100%;
-max-width:420px;
-padding:25px;
-text-align:center;
-position:relative
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  right:0;
+  width:100%;
+  padding:18px 20px;
+  display:flex;
+  justify-content:flex-end;
+  z-index:1000;
 }
 
-/* BRAND */
-.brand{
-font-family:'Playfair Display',serif;
-font-size:34px;
-letter-spacing:6px;
-font-weight:600
+.menu-btn{
+  font-size:26px;
+  cursor:pointer;
 }
-.tag{
-color:#d4af37;
-margin:12px 0 28px;
-font-style:italic;
-letter-spacing:1px
+
+/* MENU */
+nav{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:240px;
+  height:100%;
+  background:#111632;
+  padding:60px 20px;
+  transition:0.3s;
+}
+
+nav a{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  padding:14px 0;
+  font-size:18px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+nav.active{
+  right:0;
+}
+
+/* MAIN */
+main{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 20px 40px;
+}
+
+h1{
+  letter-spacing:4px;
+  font-weight:600;
+}
+
+.tagline{
+  color:#d4af37;
+  margin-top:8px;
+  font-size:18px;
 }
 
 /* BUTTONS */
+.buttons{
+  width:100%;
+  max-width:360px;
+  margin-top:40px;
+}
+
 .btn{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-padding:15px;
-margin:12px 0;
-border-radius:30px;
-text-decoration:none;
-color:#fff;
-font-weight:600;
-transition:.3s
-}
-.btn:hover{transform:scale(1.05)}
-
-.w{background:#25D366}
-.m{background:#4285F4}
-.c{background:#E67E22}
-.i{background:#C13584}
-
-/* SECTIONS */
-.section{display:none}
-.section.active{display:block}
-
-input,textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:none
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:16px;
+  margin:14px 0;
+  border-radius:40px;
+  font-size:18px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
 }
 
-button{
-width:100%;
-padding:14px;
-border-radius:30px;
-border:none;
-background:#d4af37;
-font-weight:600;
-cursor:pointer
+.whatsapp{background:#25D366;}
+.location{background:#3b6bdc;}
+.call{background:#e4572e;}
+.instagram{background:#c13584;}
+
+.btn i{
+  font-size:20px;
+}
+
+/* ABOUT / CONTACT / ADMIN */
+section{
+  display:none;
+  padding:120px 20px;
+  max-width:600px;
+  margin:auto;
+}
+
+section.active{
+  display:block;
 }
 
 .back{
-margin-top:22px;
-color:#d4af37;
-cursor:pointer;
-display:inline-block;
-font-size:14px
+  margin-top:30px;
+  display:inline-block;
+  color:#d4af37;
+  cursor:pointer;
 }
 
-/* MENU BUTTON – FIXED TOP RIGHT */
-.menu-btn{
-position:fixed;
-top:18px;
-right:18px;
-font-size:22px;
-cursor:pointer;
-z-index:100
+/* ADMIN */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:6px;
+  border:none;
 }
 
-/* MENU OVERLAY */
-.menu{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:99
+.login-btn{
+  background:#d4af37;
+  color:#000;
+  padding:12px;
+  border:none;
+  width:100%;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
 }
-
-.menu-box{
-background:#0b0f2a;
-padding:30px;
-border-radius:22px;
-width:260px;
-text-align:center
-}
-
-.menu-box a{
-display:block;
-margin:16px 0;
-color:#fff;
-text-decoration:none;
-font-weight:500;
-letter-spacing:1px
-}
-
-.menu-box a:hover{color:#d4af37}
 </style>
 </head>
 
 <body>
 
-<!-- MENU BUTTON -->
-<div class="menu-btn" onclick="toggleMenu()">
-<i class="fas fa-bars"></i>
-</div>
+<header>
+  <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+</header>
 
-<div class="container">
+<nav id="menu">
+  <a href="#" onclick="showSection('home')">Home</a>
+  <a href="#" onclick="showSection('about')">About</a>
+  <a href="#" onclick="showSection('contact')">Contact</a>
+  <a href="#" onclick="showSection('admin')">Admin Login</a>
+</nav>
 
 <!-- HOME -->
-<div id="home" class="section active">
-<div class="brand">SALON AURA</div>
-<div class="tag">Where Beauty Meets Elegance</div>
+<main id="home" class="active">
+  <h1>SALON AURA</h1>
+  <div class="tagline">Where Beauty Meets Elegance</div>
 
-<a class="btn w" href="https://wa.me/94774657460">
-<i class="fab fa-whatsapp"></i> WhatsApp
-</a>
+  <div class="buttons">
+    <a class="btn whatsapp" href="https://wa.me/94774657460" target="_blank">
+      <i class="fab fa-whatsapp"></i> Book Appointment
+    </a>
 
-<a class="btn m" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6">
-<i class="fa fa-location-dot"></i> Location
-</a>
+    <a class="btn location" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6" target="_blank">
+      <i class="fas fa-location-dot"></i> Location
+    </a>
 
-<a class="btn c" href="tel:+94774657460">
-<i class="fa fa-phone"></i> Call
-</a>
+    <a class="btn call" href="tel:+94774657460">
+      <i class="fas fa-phone"></i> Call
+    </a>
 
-<a class="btn i" href="https://www.instagram.com/_.salonaura._">
-<i class="fab fa-instagram"></i> Instagram
-</a>
-</div>
+    <a class="btn instagram" href="https://www.instagram.com/_.salonaura._" target="_blank">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+  </div>
+</main>
 
 <!-- ABOUT -->
-<div id="about" class="section">
-<h2 style="letter-spacing:2px">About Us</h2>
-<p style="margin-top:20px;color:#ccc;line-height:1.7;font-size:15px">
-Salon Aura is a refined beauty destination focused on elegance,
-confidence, and personalized care. Our professional team delivers
-high-quality grooming and beauty services in a calm,
-luxurious environment designed to elevate every client experience.
-</p>
-<div class="back" onclick="openSection('home')">← Back to Home</div>
-</div>
+<section id="about">
+  <h2>About Salon Aura</h2>
+  <p style="margin-top:15px; line-height:1.6;">
+    Salon Aura is a modern beauty salon where elegance meets professionalism.
+    We offer premium beauty services with a personalized touch.
+  </p>
+  <div class="back" onclick="showSection('home')">← Back</div>
+</section>
 
 <!-- CONTACT -->
-<div id="contact" class="section">
-<h2 style="letter-spacing:2px">Contact Us</h2>
-<input id="n" placeholder="Your Name">
-<input id="p" placeholder="Phone Number">
-<textarea id="m" placeholder="Message"></textarea>
-<button onclick="sendMsg()">Send via WhatsApp</button>
-<div class="back" onclick="openSection('home')">← Back to Home</div>
-</div>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p style="margin-top:15px;">WhatsApp: +94 77 465 7460</p>
+  <p>Instagram: @_salonaura_</p>
+  <div class="back" onclick="showSection('home')">← Back</div>
+</section>
 
 <!-- ADMIN -->
-<div id="admin" class="section">
-<h2 style="letter-spacing:2px">Admin Login</h2>
-<input id="u" placeholder="Username">
-<input id="pw" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
-<p id="msg" style="margin-top:15px"></p>
-<div class="back" onclick="openSection('home')">← Back to Home</div>
-</div>
-
-</div>
-
-<!-- MENU -->
-<div class="menu" id="menu" onclick="toggleMenu()">
-<div class="menu-box" onclick="event.stopPropagation()">
-<a onclick="go('about')">About</a>
-<a onclick="go('contact')">Contact</a>
-<a onclick="go('admin')">Admin Login</a>
-</div>
-</div>
+<section id="admin">
+  <h2>Admin Login</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button class="login-btn">Login</button>
+  <div class="back" onclick="showSection('home')">← Back</div>
+</section>
 
 <script>
-function openSection(id){
-document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-}
-
 function toggleMenu(){
-menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-menu.style.alignItems="center";
-menu.style.justifyContent="center";
+  document.getElementById("menu").classList.toggle("active");
 }
 
-function go(id){
-toggleMenu();
-openSection(id);
-}
-
-function sendMsg(){
-let url=`https://wa.me/94774657460?text=Name:%20${n.value}%0APhone:%20${p.value}%0AMessage:%20${m.value}`;
-window.location.href=url;
-}
-
-function login(){
-if(u.value==="admin" && pw.value==="Aura@2025#Salon"){
-msg.innerHTML="Admin access granted ✅";
-}else{
-msg.innerHTML="Wrong credentials ❌";
-}
+function showSection(id){
+  document.querySelectorAll("main, section").forEach(el=>{
+    el.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+  document.getElementById("menu").classList.remove("active");
 }
 </script>
 
