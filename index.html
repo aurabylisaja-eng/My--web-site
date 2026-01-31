@@ -3,237 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salon Aura</title>
+<title>Contact | Salon Aura</title>
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a1f3c, #0b0f2a);
+  color: white;
+  text-align: center;
+  padding: 30px;
 }
 
-body{
-  min-height:100vh;
-  background: radial-gradient(circle at top, #1a1f3c, #0b0f24);
-  color:#fff;
+h1 {
+  margin-bottom: 25px;
 }
 
-/* HEADER */
-header{
-  position:fixed;
-  top:0;
-  right:0;
-  width:100%;
-  padding:18px 20px;
-  display:flex;
-  justify-content:flex-end;
-  z-index:1000;
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px auto;
+  width: 90%;
+  max-width: 320px;
+  padding: 15px;
+  border-radius: 40px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
 }
 
-.menu-btn{
-  font-size:26px;
-  cursor:pointer;
-}
+.whatsapp { background: #25D366; }
+.instagram { background: #C13584; }
+.facebook { background: #1877F2; }
+.tiktok { background: #000000; }
 
-/* MENU */
-nav{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:240px;
-  height:100%;
-  background:#111632;
-  padding:60px 20px;
-  transition:0.3s;
-}
-
-nav a{
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  padding:14px 0;
-  font-size:18px;
-  border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-nav.active{
-  right:0;
-}
-
-/* MAIN */
-main{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:120px 20px 40px;
-}
-
-h1{
-  letter-spacing:4px;
-  font-weight:600;
-}
-
-.tagline{
-  color:#d4af37;
-  margin-top:8px;
-  font-size:18px;
-}
-
-/* BUTTONS */
-.buttons{
-  width:100%;
-  max-width:360px;
-  margin-top:40px;
-}
-
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  width:100%;
-  padding:16px;
-  margin:14px 0;
-  border-radius:40px;
-  font-size:18px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-}
-
-.whatsapp{background:#25D366;}
-.location{background:#3b6bdc;}
-.call{background:#e4572e;}
-.instagram{background:#c13584;}
-
-.btn i{
-  font-size:20px;
-}
-
-/* ABOUT / CONTACT / ADMIN */
-section{
-  display:none;
-  padding:120px 20px;
-  max-width:600px;
-  margin:auto;
-}
-
-section.active{
-  display:block;
-}
-
-.back{
-  margin-top:30px;
-  display:inline-block;
-  color:#d4af37;
-  cursor:pointer;
-}
-
-/* ADMIN */
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:6px;
-  border:none;
-}
-
-.login-btn{
-  background:#d4af37;
-  color:#000;
-  padding:12px;
-  border:none;
-  width:100%;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:600;
+.back {
+  margin-top: 30px;
+  display: inline-block;
+  color: #f5c16c;
+  text-decoration: none;
+  font-size: 16px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
-</header>
+<h1>Contact Us</h1>
 
-<nav id="menu">
-  <a href="#" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('about')">About</a>
-  <a href="#" onclick="showSection('contact')">Contact</a>
-  <a href="#" onclick="showSection('admin')">Admin Login</a>
-</nav>
+<!-- WhatsApp -->
+<a class="contact-btn whatsapp"
+   href="https://wa.me/94774657460"
+   target="_blank">
+  <i class="fab fa-whatsapp"></i> WhatsApp
+</a>
 
-<!-- HOME -->
-<main id="home" class="active">
-  <h1>SALON AURA</h1>
-  <div class="tagline">Where Beauty Meets Elegance</div>
+<!-- Instagram -->
+<a class="contact-btn instagram"
+   href="https://www.instagram.com/_salonaura_/"
+   target="_blank">
+  <i class="fab fa-instagram"></i> Instagram
+</a>
 
-  <div class="buttons">
-    <a class="btn whatsapp" href="https://wa.me/94774657460" target="_blank">
-      <i class="fab fa-whatsapp"></i> Book Appointment
-    </a>
+<!-- Facebook -->
+<a class="contact-btn facebook"
+   href="https://www.facebook.com/profile.php?id=61572539954499&mibextid=ZbWKwL"
+   target="_blank">
+  <i class="fab fa-facebook"></i> Facebook
+</a>
 
-    <a class="btn location" href="https://maps.app.goo.gl/tFirJp1zrfcYy98n6" target="_blank">
-      <i class="fas fa-location-dot"></i> Location
-    </a>
+<!-- TikTok -->
+<a class="contact-btn tiktok"
+   href="https://www.tiktok.com/@_salonaura.official?_r=1&_t=ZS-93We9WQdTzp"
+   target="_blank">
+  <i class="fab fa-tiktok"></i> TikTok
+</a>
 
-    <a class="btn call" href="tel:+94774657460">
-      <i class="fas fa-phone"></i> Call
-    </a>
-
-    <a class="btn instagram" href="https://www.instagram.com/_.salonaura._" target="_blank">
-      <i class="fab fa-instagram"></i> Instagram
-    </a>
-  </div>
-</main>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About Salon Aura</h2>
-  <p style="margin-top:15px; line-height:1.6;">
-    Salon Aura is a modern beauty salon where elegance meets professionalism.
-    We offer premium beauty services with a personalized touch.
-  </p>
-  <div class="back" onclick="showSection('home')">← Back</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p style="margin-top:15px;">WhatsApp: +94 77 465 7460</p>
-  <p>Instagram: @_salonaura_</p>
-  <div class="back" onclick="showSection('home')">← Back</div>
-</section>
-
-<!-- ADMIN -->
-<section id="admin">
-  <h2>Admin Login</h2>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button class="login-btn">Login</button>
-  <div class="back" onclick="showSection('home')">← Back</div>
-</section>
-
-<script>
-function toggleMenu(){
-  document.getElementById("menu").classList.toggle("active");
-}
-
-function showSection(id){
-  document.querySelectorAll("main, section").forEach(el=>{
-    el.classList.remove("active");
-  });
-  document.getElementById(id).classList.add("active");
-  document.getElementById("menu").classList.remove("active");
-}
-</script>
+<!-- Back button -->
+<a href="index.html" class="back">← Back</a>
 
 </body>
 </html>
