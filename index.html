@@ -8,152 +8,140 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
 body{
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1a1f3c, #05070f);
+  background:radial-gradient(circle at top,#1a1f3c,#060814);
   color:#fff;
+  height:100vh;
+  overflow:hidden;
 }
 
 /* HEADER */
 header{
-  padding:25px;
-  text-align:center;
-  position:relative;
-}
-header h1{
-  margin:0;
-  letter-spacing:4px;
-}
-header p{
-  color:#c9a44c;
-  margin-top:6px;
-  font-size:15px;
-}
-
-/* MENU BUTTON */
-.menu-btn{
-  position:absolute;
-  top:22px;
-  right:22px;
-  font-size:26px;
-  cursor:pointer;
-}
-
-/* MAIN BUTTONS */
-.main{
-  max-width:420px;
-  margin:40px auto;
-  padding:0 15px;
-}
-.btn{
+  padding:20px;
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  justify-content:center;
-  gap:12px;
-  padding:18px;
-  border-radius:40px;
-  margin-bottom:18px;
-  font-size:18px;
-  font-weight:600;
-  text-decoration:none;
-  color:#fff;
 }
-.whatsapp{background:#25d366;}
-.location{background:#3b6eea;}
-.call{background:#e4572e;}
-.instagram{background:#c13584;}
+header h1{letter-spacing:4px;font-size:26px}
+header span{color:#cfae70;font-size:14px}
 
-/* MENU OVERLAY */
+/* MENU */
 .menu{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.92);
+  background:#060814;
   display:none;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  z-index:10;
+  align-items:center;
+  gap:25px;
 }
 .menu a{
   color:#fff;
   text-decoration:none;
   font-size:22px;
-  margin:15px 0;
 }
-.close{
-  position:absolute;
-  top:20px;
-  right:25px;
-  font-size:30px;
-  cursor:pointer;
+.menu a:hover{color:#cfae70}
+.menu.active{display:flex}
+
+/* SECTIONS */
+section{
+  display:none;
+  height:calc(100vh - 80px);
+  padding:30px;
+}
+section.active{display:block}
+
+/* HOME BUTTONS */
+.home-links a{
+  display:block;
+  margin:18px auto;
+  padding:18px;
+  max-width:420px;
+  text-align:center;
+  border-radius:40px;
+  text-decoration:none;
+  color:#fff;
+  font-size:18px;
+}
+.whatsapp{background:#25D366}
+.instagram{background:#111}
+.facebook{background:#1877f2}
+.tiktok{background:#000}
+
+/* CONTACT LINKS */
+.contact a{
+  display:block;
+  padding:18px 0;
+  font-size:20px;
+  text-decoration:none;
+  color:#fff;
 }
 
-/* CONTACT SECTION */
-#contact{
-  display:none;
-  max-width:420px;
-  margin:40px auto;
-  padding:0 15px;
+/* BACK */
+.back{
+  margin-top:40px;
+  color:#cfae70;
+  cursor:pointer;
 }
-.contact-btn{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  padding:18px;
-  border-radius:40px;
-  margin-bottom:16px;
-  font-size:18px;
-  font-weight:600;
-  color:#fff;
-  text-decoration:none;
-}
-.fb{background:#1877f2;}
-.tiktok{background:#000;}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="menu-btn" onclick="openMenu()"><i class="fas fa-bars"></i></div>
-  <h1>SALON AURA</h1>
-  <p>Where Beauty Meets Elegance</p>
+  <div>
+    <h1>SALON AURA</h1>
+    <span>Where Beauty Meets Elegance</span>
+  </div>
+  <i class="fas fa-bars" onclick="toggleMenu()"></i>
 </header>
 
-<div class="main" id="home">
-  <a class="btn whatsapp" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i> Book Appointment</a>
-  <a class="btn location" href="#"><i class="fas fa-map-marker-alt"></i> Location</a>
-  <a class="btn call" href="tel:+94774657460"><i class="fas fa-phone"></i> Call</a>
-  <a class="btn instagram" href="https://instagram.com/_salonaura_"><i class="fab fa-instagram"></i> Instagram</a>
-</div>
-
-<div id="contact">
-  <a class="contact-btn whatsapp" href="https://wa.me/94774657460"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-  <a class="contact-btn instagram" href="https://instagram.com/_salonaura_"><i class="fab fa-instagram"></i> Instagram</a>
-  <a class="contact-btn fb" href="https://www.facebook.com/profile.php?id=61572539954499"><i class="fab fa-facebook-f"></i> Facebook</a>
-  <a class="contact-btn tiktok" href="https://www.tiktok.com/@_salonaura.official"><i class="fab fa-tiktok"></i> TikTok</a>
-</div>
-
+<!-- MENU -->
 <div class="menu" id="menu">
-  <div class="close" onclick="closeMenu()">×</div>
-  <a onclick="showHome()">Home</a>
-  <a onclick="showContact()">Contact</a>
+  <a onclick="openPage('home')">Home</a>
+  <a onclick="openPage('contact')">Contact</a>
+  <a onclick="openPage('admin')">Admin</a>
+  <a onclick="toggleMenu()">Close</a>
 </div>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="home-links">
+    <a class="whatsapp" href="https://wa.me/94774657460">WhatsApp</a>
+    <a class="instagram" href="https://instagram.com/_salonaura_" target="_blank">Instagram</a>
+    <a class="facebook" href="https://www.facebook.com/profile.php?id=61572539954499">Facebook</a>
+    <a class="tiktok" href="https://www.tiktok.com/@_salonaura.official">TikTok</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact">
+    <a href="https://wa.me/94774657460">WhatsApp</a>
+    <a href="https://instagram.com/_salonaura_" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61572539954499">Facebook</a>
+    <a href="https://www.tiktok.com/@_salonaura.official">TikTok</a>
+  </div>
+  <div class="back" onclick="openPage('home')">← Back</div>
+</section>
+
+<!-- ADMIN -->
+<section id="admin">
+  <h2>Admin Dashboard</h2>
+  <p style="margin-top:10px;opacity:.8">Welcome to Salon Aura Admin Panel</p>
+  <div class="back" onclick="openPage('home')">← Back</div>
+</section>
 
 <script>
-function openMenu(){document.getElementById("menu").style.display="flex";}
-function closeMenu(){document.getElementById("menu").style.display="none";}
-function showContact(){
-  document.getElementById("home").style.display="none";
-  document.getElementById("contact").style.display="block";
-  closeMenu();
+function toggleMenu(){
+  document.getElementById('menu').classList.toggle('active')
 }
-function showHome(){
-  document.getElementById("contact").style.display="none";
-  document.getElementById("home").style.display="block";
-  closeMenu();
+function openPage(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'))
+  document.getElementById(id).classList.add('active')
+  document.getElementById('menu').classList.remove('active')
 }
 </script>
 
