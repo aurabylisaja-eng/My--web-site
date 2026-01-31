@@ -3,89 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | Salon Aura</title>
+<title>Salon Aura</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-body {
-  margin: 0;
+body{
+  margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1a1f3c, #0b0f2a);
-  color: white;
-  text-align: center;
-  padding: 30px;
+  background: radial-gradient(circle at top, #1a1f3c, #070b1a);
+  color:#fff;
+  text-align:center;
 }
 
-h1 {
-  margin-bottom: 25px;
+header{
+  padding:25px;
+  position:relative;
 }
 
-.contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin: 15px auto;
-  width: 90%;
-  max-width: 320px;
-  padding: 15px;
-  border-radius: 40px;
-  font-size: 18px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
+.menu-btn{
+  position:absolute;
+  right:20px;
+  top:25px;
+  font-size:26px;
+  cursor:pointer;
 }
 
-.whatsapp { background: #25D366; }
-.instagram { background: #C13584; }
-.facebook { background: #1877F2; }
-.tiktok { background: #000000; }
+h1{
+  letter-spacing:4px;
+  margin-bottom:5px;
+}
 
-.back {
-  margin-top: 30px;
-  display: inline-block;
-  color: #f5c16c;
-  text-decoration: none;
-  font-size: 16px;
+.tagline{
+  color:#d4af37;
+  font-size:14px;
+}
+
+.container{
+  max-width:420px;
+  margin:30px auto;
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px;
+  margin:18px 0;
+  border-radius:40px;
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+}
+
+.whatsapp{background:#1f7a4d;}
+.location{background:#1b3a6f;}
+.call{background:#8b3a1f;}
+.instagram{background:#2d2d2d;}
+.facebook{background:#1b3a6f;}
+.tiktok{background:#000;}
+
+.menu{
+  position:fixed;
+  inset:0;
+  background:#070b1a;
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  font-size:22px;
+  margin:15px;
+}
+
+.back{
+  margin-top:40px;
+  color:#d4af37;
+  text-decoration:none;
+  font-size:16px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Contact Us</h1>
+<header>
+  <h1>SALON AURA</h1>
+  <div class="tagline">Where Beauty Meets Elegance</div>
+  <div class="menu-btn" onclick="openMenu()">☰</div>
+</header>
 
-<!-- WhatsApp -->
-<a class="contact-btn whatsapp"
-   href="https://wa.me/94774657460"
-   target="_blank">
-  <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
+<!-- HOME -->
+<div class="container" id="home">
+  <a class="btn whatsapp" href="https://wa.me/94774657460">
+    <i class="fab fa-whatsapp"></i> Book Appointment
+  </a>
 
-<!-- Instagram -->
-<a class="contact-btn instagram"
-   href="https://www.instagram.com/_salonaura_/"
-   target="_blank">
-  <i class="fab fa-instagram"></i> Instagram
-</a>
+  <a class="btn location" href="https://maps.google.com">
+    <i class="fas fa-location-dot"></i> Location
+  </a>
 
-<!-- Facebook -->
-<a class="contact-btn facebook"
-   href="https://www.facebook.com/profile.php?id=61572539954499&mibextid=ZbWKwL"
-   target="_blank">
-  <i class="fab fa-facebook"></i> Facebook
-</a>
+  <a class="btn call" href="tel:+94774657460">
+    <i class="fas fa-phone"></i> Call
+  </a>
 
-<!-- TikTok -->
-<a class="contact-btn tiktok"
-   href="https://www.tiktok.com/@_salonaura.official?_r=1&_t=ZS-93We9WQdTzp"
-   target="_blank">
-  <i class="fab fa-tiktok"></i> TikTok
-</a>
+  <a class="btn instagram" href="https://instagram.com/_salonaura_">
+    <i class="fab fa-instagram"></i> Instagram
+  </a>
+</div>
 
-<!-- Back button -->
-<a href="index.html" class="back">← Back</a>
+<!-- MENU -->
+<div class="menu" id="menu">
+  <a href="#" onclick="showContact()">Contact</a>
+  <a href="#" onclick="closeMenu()">Close</a>
+</div>
+
+<!-- CONTACT -->
+<div class="container" id="contact" style="display:none;">
+  <h2>Contact Us</h2>
+
+  <a class="btn whatsapp" href="https://wa.me/94774657460">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+
+  <a class="btn instagram" href="https://instagram.com/_salonaura_">
+    <i class="fab fa-instagram"></i> Instagram
+  </a>
+
+  <a class="btn facebook" href="https://www.facebook.com/profile.php?id=61572539954499">
+    <i class="fab fa-facebook-f"></i> Facebook
+  </a>
+
+  <a class="btn tiktok" href="https://www.tiktok.com/@_salonaura.official">
+    <i class="fab fa-tiktok"></i> TikTok
+  </a>
+
+  <a class="back" href="#" onclick="goHome()">← Back to Home</a>
+</div>
+
+<script>
+function openMenu(){
+  document.getElementById("menu").style.display="flex";
+}
+function closeMenu(){
+  document.getElementById("menu").style.display="none";
+}
+function showContact(){
+  closeMenu();
+  document.getElementById("home").style.display="none";
+  document.getElementById("contact").style.display="block";
+}
+function goHome(){
+  document.getElementById("contact").style.display="none";
+  document.getElementById("home").style.display="block";
+}
+</script>
 
 </body>
 </html>
